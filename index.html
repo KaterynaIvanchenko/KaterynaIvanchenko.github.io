@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artur Mistiuk</title>
+  <link rel="icon" type="image/png" href="python_icon.svg">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav nav-left">
+      <a href="#home">HOME</a>
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+
+    <div class="logo">
+      <img src="logo.png" alt="Jeff Moberg">
+      <span>Sound Designer // Music Maker</span>
+    </div>
+
+    <nav class="nav nav-right">
+      <a href="#contact">CONTACT</a>
+      <a href="#films">FILMS</a>
+      <a href="#fun">FUN</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="container hero__container">
+      <div class="hero__about">
+        <h1 class="hero__title">Artur Mistiuk</h1>
+        <h2 class=" hero__subtitle">Data Analyst</h2>
+        <p class="hero__description">
+          Detail-oriented Data Analyst specializing in predictive analytics and Machine Learning. Experienced in
+          developing ML models, and analyzing large-scale datasets to drive business impact.
+          <br><br>
+          Currently working as a Data Analyst on a project at Tink (a Visa company)
+          <br>
+          Focus: Data Labelling in Named Entity Recognition (NER), enhancing transaction
+          categorization.
+        </p>
+
+        <div class="hero__contact">
+          <div class="hero__contact-item">
+            <i class="bx bx-envelope"></i>
+            <a href="mailto:mistiuka@visa.com" class="hero__contact-link">mistiuka@visa.com</a>
+          </div>
+          <div class="hero__contact-item">
+            <i class="bx bx-phone"></i>
+            <a href="tel:+46762541491" class="hero__contact-link">+46762541491</a>
+          </div>
+        </div>
+
+        <div class="hero__links">
+          <a class="hero__link" href="https://www.linkedin.com/in/artur-mistiuk-9a9a31234/"><i
+              class='bx bxl-linkedin'></i></a>
+          <a class="hero__link" href="https://github.com/ArturMistiuk"><i class='bx bxl-github'></i></a>
+        </div>
+      </div>
+
+      <div class="hero__box">
+        <img class="hero__box-img" src="my_photo.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="projects pb-16">
+    <div class="container">
+      <h2 class="projects__title font-semibold text-2xl tracking-tight mb-4">Personal Projects</h2>
+      <p class="projects__description text-slate-700 text-lg">Below is a selection of recent projects that I've worked
+        on.</p>
+      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/WaveLip">
+          <div>
+            <video id="project-video" width="500" height="260" controls autoplay>
+              <source src="projects_photos/Trump.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">WaveLip</h3>
+          <p class="text-slate-500 text-base">WaveLip - a fully autonomous deepfake creator on your computer, providing
+            you with the tools to seamlessly generate synthetic media. Utilizes two pre-trained deep learning models, as
+            well as Python scripts for scraping videos from YouTube.</p>
+        </a>
+        <script>
+          var video = document.getElementById('project-video');
+
+          video.addEventListener('click', function (event) {
+            event.preventDefault();
+            if (video.paused) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        </script>
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/Customer_Segmentation">
+          <div class="relative rounded-xl mb-4 shadow-project">
+            <img alt="" loading="lazy" width="450" height="240" decoding="async" class="rounded-xl bg-cover"
+              style="color:transparent" src="projects_photos/customer_segmentation.png">
+          </div>
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Customer Segmentation (KMeans Clustering)</h3>
+          <p class="text-slate-500 text-base">Used Unsupervised Machine Learning to segment customers into meaningful
+            cluster based on customer behaviour. Can be used for targeted marketing campaigns.</p>
+        </a>
+      </div>
+
+      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/Data_Visualization">
+          <img alt="" loading="lazy" width="450" height="240" decoding="async" class="project_1_0 bg-cover"
+            style="color:transparent" src="projects_photos/Causes_of_death.png">
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Analysis of Causes of Death in Sweden and
+            Ukraine</h3>
+          <p class="text-slate-500 text-base">This project focuses on analyzing and comparing the causes of death in
+            Sweden and Ukraine. The main goal is to visualize the data and create insightful graphs that highlight the
+            influencing factors.</p>
+        </a>
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/Gender_Prediction_from_Photos/tree/main">
+          <div class="relative rounded-xl mb-4 shadow-project">
+            <img alt="" loading="lazy" width="450" height="240" decoding="async" class="rounded-xl bg-cover"
+              style="color:transparent" src="projects_photos/Gender_Predictions.png">
+          </div>
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Gender Prediction using SVM Model</h3>
+          <p class="text-slate-500 text-base">This project aims to predict gender based on facial images using Support
+            Vector Machine (SVM) model.</p>
+        </a>
+      </div>
+
+      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/Company_Sales_Analysis_Insights_and_Visualization?tab=readme-ov-file">
+          <img alt="" loading="lazy" width="450" height="240" decoding="async" style="color:transparent"
+            src="projects_photos/EDA.png">
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Insightful Analytics: Optimizing Business
+            Through EDA</h3>
+          <p class="text-slate-500 text-base">I conducted an in-depth Exploratory Data Analysis (EDA) to uncover
+            valuable insights that can help stakeholders make strategically important decisions.</p>
+        </a>
+        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
+          href="https://github.com/ArturMistiuk/NASA_Project/tree/main">
+          <img alt="" loading="lazy" decoding="async" style="color:transparent" src="projects_photos/nasa.jpg">
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Solar Panel Farm Optimization Using NASA API
+            Data</h3>
+          <p class="text-slate-500 text-base">In this project, I used the NASA API to gather data for specific
+            coordinates to identify the optimal location for installing a solar panel farm.</p>
+        </a>
+      </div>
+
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <section class="certificates pb-16">
+    <div class="container">
+      <h2 class="certificates__title font-semibold text-2xl tracking-tight mb-4">Certificates</h2>
+      <p class="certificates__description text-slate-700 text-lg">Below is a selection of my certificates.</p>
+
+      <div style="height: 50px;"></div>
+
+      <div class="certificates__container grid grid-cols-1 gap-8 mt-16">
+        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
+          <div class="relative rounded-xl mb-4 shadow-certificate">
+            <img class="nod" alt="" loading="lazy" src="certificates/Nod.png">
+          </div>
+          <h3 class="text-slate-500 font-semibold tracking-tight text-xl">Data Analytics Coding Bootcamp (Stockholm)
+          </h3>
+        </div>
+
+        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
+          <div class="relative rounded-xl mb-4 shadow-certificate">
+            <img alt="" loading="lazy" decoding="async" style="color:transparent" src="certificates/goit.png">
+          </div>
+          <h3 class="text-slate-500 text-base">Python Developer Course at GoIT (2022-2023)</h3>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 100px;"></div>
+
+    <div class="container">
+      <div class="certificates__container grid grid-cols-1 gap-8 mt-16">
+        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
+          <div class="relative rounded-xl mb-4 shadow-certificate">
+            <img alt="" loading="lazy" class="img-small-rounded" src="certificates/Diploma.jfif">
+          </div>
+          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Bachelor's Degree in Software Engineering from
+            Zaporizhzhia National University (2017-2021)</h3>
+        </div>
+      </div>
+
+      <div style="height: 150px;"></div>
+  </section>
+
+</body>
+
+</html>

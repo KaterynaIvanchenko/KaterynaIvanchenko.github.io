@@ -7,9 +7,15 @@
 :root {
   --header-h: 120px;
 }
+
 section[id] {
   scroll-margin-top: calc(var(--header-h) + 20px);
 }
+
+#home {
+  scroll-margin-top: calc(var(--header-h) + 40px); /* 20px — “чуть выше” */
+}
+
 body {
   margin: 0;
   padding-top: var(--header-h); /* было 210 без px — это ошибка */

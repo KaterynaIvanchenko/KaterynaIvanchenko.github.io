@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kateryna Ivanchenko</title>
+
   <link rel="icon" type="image/png" href="python_icon.svg">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -16,7 +18,6 @@
 <body>
   <header class="site-header">
     <div class="header-inner container">
-
       <nav class="nav nav-left">
         <a href="#home">HOME</a>
         <a href="#work">WORK</a>
@@ -30,12 +31,10 @@
         <a href="#contact">CONTACT</a>
         <a href="#about">ABOUT</a>
       </nav>
-
     </div>
   </header>
 
-
-  <div class="hero">
+  <div class="hero" id="home">
     <div class="container hero__container">
       <div class="showreel">
         <div class="showreel__label">SHOWREEL</div>
@@ -44,127 +43,160 @@
           <source src="showreel.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        
       </div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <section class="projects">
+  <section class="projects" id="work">
     <div class="container">
-      <h2 class="projects__title font-semibold text-2xl tracking-tight mb-4">Personal Projects</h2>
-      <p class="projects__description text-slate-700 text-lg">Below is a selection of recent projects that I've worked
-        on.</p>
-      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/WaveLip">
+      <h2 class="projects__title">Personal Projects</h2>
+      <p class="projects__description">
+        Below is a selection of recent projects that I've worked on.
+      </p>
+
+      <div class="projects__container">
+        <a class="project" href="https://github.com/ArturMistiuk/WaveLip">
           <div>
             <video id="project-video" width="500" height="260" controls autoplay>
               <source src="projects_photos/Trump.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">WaveLip</h3>
-          <p class="text-slate-500 text-base">WaveLip - a fully autonomous deepfake creator on your computer, providing
-            you with the tools to seamlessly generate synthetic media. Utilizes two pre-trained deep learning models, as
-            well as Python scripts for scraping videos from YouTube.</p>
-        </a>
-        <script>
-          var video = document.getElementById('project-video');
 
-          video.addEventListener('click', function (event) {
-            event.preventDefault();
-            if (video.paused) {
-              video.play();
-            } else {
-              video.pause();
-            }
-          });
-        </script>
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/Customer_Segmentation">
-          <div class="relative rounded-xl mb-4 shadow-project">
-            <img alt="" loading="lazy" width="450" height="240" decoding="async" class="rounded-xl bg-cover"
-              style="color:transparent" src="projects_photos/customer_segmentation.png">
+          <h3>WaveLip</h3>
+          <p>
+            WaveLip - a fully autonomous deepfake creator on your computer, providing you with the tools to seamlessly
+            generate synthetic media. Utilizes two pre-trained deep learning models, as well as Python scripts for
+            scraping videos from YouTube.
+          </p>
+        </a>
+
+        <a class="project" href="https://github.com/ArturMistiuk/Customer_Segmentation">
+          <div class="shadow-project">
+            <img
+              alt=""
+              loading="lazy"
+              width="450"
+              height="240"
+              decoding="async"
+              style="color:transparent"
+              src="projects_photos/customer_segmentation.png"
+            >
           </div>
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Customer Segmentation (KMeans Clustering)</h3>
-          <p class="text-slate-500 text-base">Used Unsupervised Machine Learning to segment customers into meaningful
-            cluster based on customer behaviour. Can be used for targeted marketing campaigns.</p>
+
+          <h3>Customer Segmentation (KMeans Clustering)</h3>
+          <p>
+            Used Unsupervised Machine Learning to segment customers into meaningful cluster based on customer behaviour.
+            Can be used for targeted marketing campaigns.
+          </p>
         </a>
       </div>
 
-      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/Data_Visualization">
-          <img alt="" loading="lazy" width="450" height="240" decoding="async" class="project_1_0 bg-cover"
-            style="color:transparent" src="projects_photos/Causes_of_death.png">
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Analysis of Causes of Death in Sweden and
-            Ukraine</h3>
-          <p class="text-slate-500 text-base">This project focuses on analyzing and comparing the causes of death in
-            Sweden and Ukraine. The main goal is to visualize the data and create insightful graphs that highlight the
-            influencing factors.</p>
+      <div class="projects__container">
+        <a class="project" href="https://github.com/ArturMistiuk/Data_Visualization">
+          <img
+            alt=""
+            loading="lazy"
+            width="450"
+            height="240"
+            decoding="async"
+            class="project_1_0"
+            style="color:transparent"
+            src="projects_photos/Causes_of_death.png"
+          >
+
+          <h3>Analysis of Causes of Death in Sweden and Ukraine</h3>
+          <p>
+            This project focuses on analyzing and comparing the causes of death in Sweden and Ukraine. The main goal is
+            to visualize the data and create insightful graphs that highlight the influencing factors.
+          </p>
         </a>
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/Gender_Prediction_from_Photos/tree/main">
-          <div class="relative rounded-xl mb-4 shadow-project">
-            <img alt="" loading="lazy" width="450" height="240" decoding="async" class="rounded-xl bg-cover"
-              style="color:transparent" src="projects_photos/Gender_Predictions.png">
+
+        <a class="project" href="https://github.com/ArturMistiuk/Gender_Prediction_from_Photos/tree/main">
+          <div class="shadow-project">
+            <img
+              alt=""
+              loading="lazy"
+              width="450"
+              height="240"
+              decoding="async"
+              style="color:transparent"
+              src="projects_photos/Gender_Predictions.png"
+            >
           </div>
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Gender Prediction using SVM Model</h3>
-          <p class="text-slate-500 text-base">This project aims to predict gender based on facial images using Support
-            Vector Machine (SVM) model.</p>
+
+          <h3>Gender Prediction using SVM Model</h3>
+          <p>
+            This project aims to predict gender based on facial images using Support Vector Machine (SVM) model.
+          </p>
         </a>
       </div>
 
-      <div class="projects__container grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/Company_Sales_Analysis_Insights_and_Visualization?tab=readme-ov-file">
-          <img alt="" loading="lazy" width="450" height="240" decoding="async" style="color:transparent"
-            src="projects_photos/EDA.png">
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Insightful Analytics: Optimizing Business
-            Through EDA</h3>
-          <p class="text-slate-500 text-base">I conducted an in-depth Exploratory Data Analysis (EDA) to uncover
-            valuable insights that can help stakeholders make strategically important decisions.</p>
+      <div class="projects__container">
+        <a
+          class="project"
+          href="https://github.com/ArturMistiuk/Company_Sales_Analysis_Insights_and_Visualization?tab=readme-ov-file"
+        >
+          <img
+            alt=""
+            loading="lazy"
+            width="450"
+            height="240"
+            decoding="async"
+            style="color:transparent"
+            src="projects_photos/EDA.png"
+          >
+
+          <h3>Insightful Analytics: Optimizing Business Through EDA</h3>
+          <p>
+            I conducted an in-depth Exploratory Data Analysis (EDA) to uncover valuable insights that can help
+            stakeholders make strategically important decisions.
+          </p>
         </a>
-        <a class="project flex flex-col justify-center bg-slate-100 hover:bg-slate-200/70 transition-colors rounded-xl p-8"
-          href="https://github.com/ArturMistiuk/NASA_Project/tree/main">
-          <img alt="" loading="lazy" decoding="async" style="color:transparent" src="projects_photos/nasa.jpg">
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Solar Panel Farm Optimization Using NASA API
-            Data</h3>
-          <p class="text-slate-500 text-base">In this project, I used the NASA API to gather data for specific
-            coordinates to identify the optimal location for installing a solar panel farm.</p>
+
+        <a class="project" href="https://github.com/ArturMistiuk/NASA_Project/tree/main">
+          <img
+            alt=""
+            loading="lazy"
+            decoding="async"
+            style="color:transparent"
+            src="projects_photos/nasa.jpg"
+          >
+
+          <h3>Solar Panel Farm Optimization Using NASA API Data</h3>
+          <p>
+            In this project, I used the NASA API to gather data for specific coordinates to identify the optimal
+            location for installing a solar panel farm.
+          </p>
         </a>
       </div>
-
-
     </div>
   </section>
 
   <div class="divider"></div>
 
-
   <section class="certificates">
     <div class="container">
-      <h2 class="certificates__title font-semibold text-2xl tracking-tight mb-4">Certificates</h2>
-      <p class="certificates__description text-slate-700 text-lg">Below is a selection of my certificates.</p>
+      <h2 class="certificates__title">Certificates</h2>
+      <p class="certificates__description">Below is a selection of my certificates.</p>
 
       <div style="height: 50px;"></div>
 
-      <div class="certificates__container grid grid-cols-1 gap-8 mt-16">
-        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
-          <div class="relative rounded-xl mb-4 shadow-certificate">
+      <div class="certificates__container">
+        <div class="certificate">
+          <div class="shadow-certificate">
             <img class="nod" alt="" loading="lazy" src="certificates/Nod.png">
           </div>
-          <h3 class="text-slate-500 font-semibold tracking-tight text-xl">Data Analytics Coding Bootcamp (Stockholm)
-          </h3>
+          <h3>Data Analytics Coding Bootcamp (Stockholm)</h3>
         </div>
 
-        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
-          <div class="relative rounded-xl mb-4 shadow-certificate">
+        <div class="certificate">
+          <div class="shadow-certificate">
             <img alt="" loading="lazy" decoding="async" style="color:transparent" src="certificates/goit.png">
           </div>
-          <h3 class="text-slate-500 text-base">Python Developer Course at GoIT (2022-2023)</h3>
+          <h3>Python Developer Course at GoIT (2022-2023)</h3>
         </div>
       </div>
     </div>
@@ -172,19 +204,32 @@
     <div style="height: 100px;"></div>
 
     <div class="container">
-      <div class="certificates__container grid grid-cols-1 gap-8 mt-16">
-        <div class="certificate flex flex-col justify-center bg-slate-100 rounded-xl p-8">
-          <div class="relative rounded-xl mb-4 shadow-certificate">
+      <div class="certificates__container">
+        <div class="certificate">
+          <div class="shadow-certificate">
             <img alt="" loading="lazy" class="img-small-rounded" src="certificates/Diploma.jfif">
           </div>
-          <h3 class="text-slate-700 font-semibold tracking-tight text-xl">Bachelor's Degree in Software Engineering from
-            Zaporizhzhia National University (2017-2021)</h3>
+          <h3>
+            Bachelor's Degree in Software Engineering from Zaporizhzhia National University (2017-2021)
+          </h3>
         </div>
       </div>
 
       <div style="height: 150px;"></div>
+    </div>
   </section>
 
-</body>
+  <script>
+    (function () {
+      var video = document.getElementById('project-video');
+      if (!video) return;
 
+      video.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (video.paused) video.play();
+        else video.pause();
+      });
+    })();
+  </script>
+</body>
 </html>

@@ -202,6 +202,37 @@ h3 {
   animation: ava-bg 3s infinite alternate;
 }
 
+.showreel {
+  justify-self: center;
+  width: clamp(360px, 66vw, 1100px);
+}
+
+.showreel__label {
+  text-align: center;
+  margin: 12px 0;
+  font-size: 24px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+}
+
+.showreel__video {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  /* чтобы не прыгало по высоте до загрузки */
+  aspect-ratio: 16 / 9;
+  background: #000;
+
+  /* без рамок */
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 0;
+}
+
 .projects__title,
 .certificates__title {
   font-size: 2rem;
@@ -290,6 +321,8 @@ h3 {
     max-width: 350px;
     justify-self: center;
   }
+  
+  .showreel { max-width: 350px; }
 }
 
 @keyframes ava-animate {
@@ -359,4 +392,6 @@ video {
   margin-top: 35px;
   height: 285px;
 }
+
+
 

@@ -4,6 +4,9 @@
 *::after {
   box-sizing: border-box;
 }
+:root {
+  --header-h: 120px;
+}
 
 body {
   margin: 0;
@@ -95,7 +98,7 @@ img {
 
 /* ===== Hero / Showreel ===== */
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-h));
   display: flex;
   justify-content: center;
   align-items: center;

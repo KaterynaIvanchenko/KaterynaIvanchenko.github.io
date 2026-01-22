@@ -103,6 +103,112 @@ img {
 
 .hero__container {
   display: grid; /* оставляем grid, чтобы justify-self работал как раньше */
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 20px;
+}
+
+.hero__about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__title {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero__prof {
+  color: #4facfe;
+  white-space: nowrap;
+}
+
+.hero__subtitle {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.hero__description {
+  margin-bottom: 20px;
+}
+
+.hero__contact {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.hero__contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.hero__contact-link {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.hero__contact-link:hover {
+  color: #4facfe;
+}
+
+.hero__links {
+  display: flex;
+}
+
+.hero__link {
+  margin-right: 10px;
+  font-size: 40px;
+  color: #000;
+}
+
+.hero__link:hover {
+  color: #4facfe;
+}
+
+.hero__box {
+  max-width: 600px;
+  justify-self: center;
+  overflow: hidden;
+  border: 10px solid #fff;
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  animation: ava-animate 5s infinite alternate;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, .5);
+}
+
+.hero__box-img {
+  animation: ava-bg 3s infinite alternate;
+}
+
+@keyframes ava-animate {
+  0% {
+    border-radius: 62% 38% 72% 28% / 67% 32% 68% 33%;
+  }
+
+  40% {
+    border-radius: 37% 63% 53% 47% / 67% 32% 68% 33%;
+  }
+
+  60% {
+    border-radius: 23% 77% 39% 61% / 78% 54% 46% 22%;
+  }
+
+  100% {
+    border-radius: 18% 82% 24% 76% / 43% 54% 46% 57%;
+  }
+}
+
+@keyframes ava-bg {
+  from {
+    backdrop-filter: hue-rotate(0);
+  }
+
+  to {
+    backdrop-filter: hue-rotate(90deg);
+  }
 }
 
 .showreel {

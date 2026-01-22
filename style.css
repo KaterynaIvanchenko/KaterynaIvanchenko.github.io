@@ -234,6 +234,7 @@ img {
   display: block;
   aspect-ratio: 16 / 9;
   background: #000;
+  object-fit: cover;
 
   border: 0;
   outline: none;

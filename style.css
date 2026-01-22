@@ -7,7 +7,9 @@
 :root {
   --header-h: 120px;
 }
-
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
 body {
   margin: 0;
   padding-top: var(--header-h); /* было 210 без px — это ошибка */
@@ -244,29 +246,25 @@ img {
 }
 
 /* ===== Projects / Certificates ===== */
-.projects__title,
-.certificates__title {
+.projects__title{
   font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem;
 }
 
-.projects__description,
-.certificates__description {
+.projects__description{
   font-size: 1.125rem;
   color: #6b7280;
   margin: 0 0 2rem;
 }
 
-.projects__container,
-.certificates__container {
+.projects__container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
 
-.project,
-.certificate {
+.project {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -283,18 +281,7 @@ img {
   background-color: #e2e8f0;
 }
 
-/* certificate overrides (как у тебя сейчас) */
-.certificate {
-  align-items: center;
-  pointer-events: none;
-}
-
-.certificate:hover {
-  background-color: #f1f5f9;
-}
-
-.shadow-project,
-.shadow-certificate {
+.shadow-project {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -329,4 +316,21 @@ video {
   .showreel {
     max-width: 350px;
   }
+}
+.project__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* плеер всегда 16:9 */
+  overflow: hidden;
+  margin-top: 25px;       /* чтобы сохранился твой отступ сверху */
+  border-radius: 1%;      /* как у img сейчас */
+  background: #000;       /* пока видео грузится */
+}
+
+.project__video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;      /* видео заполняет весь плеер без чёрных полос */
+  object-position: center;
+  margin-top: 0;          /* на случай глобального video { margin-top } */
 }

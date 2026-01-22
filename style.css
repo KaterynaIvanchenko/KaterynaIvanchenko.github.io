@@ -7,7 +7,7 @@
 
 body {
   margin: 0;
-  padding-top: 210px; /* было 210 без px — это ошибка */
+  padding-top: var(--header-h); /* было 210 без px — это ошибка */
   font-family: 'Montserrat', sans-serif;
   background-color: #f0f4f8;
   font-size: 1.2rem;
@@ -41,7 +41,7 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: var(--header-h);
   background: #000;
   z-index: 1000;
 }

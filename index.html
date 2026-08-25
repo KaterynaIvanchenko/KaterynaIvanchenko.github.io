@@ -3,166 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kateryna Ivanchenko</title>
-
+  <meta name="description" content="Kateryna Ivanchenko — Sound Designer & Composer specializing in game audio, film, and interactive media.">
+  <meta property="og:title" content="Kateryna Ivanchenko | Sound Designer">
+  <meta property="og:description" content="Sound Designer & Composer. Game audio, film, SFX, foley.">
+  <meta property="og:image" content="https://katerynaivanchenko.github.io/my_photo.jpg">
+  <meta property="og:url" content="https://katerynaivanchenko.github.io">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kateryna Ivanchenko">
+  <link rel="canonical" href="https://katerynaivanchenko.github.io/">
+  <title>Kateryna Ivanchenko | Sound Designer</title>
   <link rel="icon" type="image/png" href="python_icon.svg">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="site-header">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
     <div class="header-inner container">
-      <nav class="nav nav-left">
-        <a href="#home">HOME</a>
-        <a href="#projects">PROJECTS</a>
-      </nav>
-
-      <div class="logo">
+      <a href="#home" class="logo">
         <img src="logo.png" alt="Kateryna Ivanchenko">
-      </div>
+      </a>
 
-      <nav class="nav nav-right">
-        <a href="#contact">CONTACT</a>
-        <a href="#about">ABOUT</a>
+      <nav class="nav" id="nav">
+        <a href="#home" class="nav__link">Home</a>
+        <a href="#showreels" class="nav__link">Showreels</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="#about" class="nav__link">About</a>
       </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <div class="hero" id="home">
-    <div class="container hero__container">
-      <div class="showreel">
-        <div class="showreel__label">SHOWREEL</div>
-
-        <video class="showreel__video" controls preload="metadata" playsinline>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero__content container">
+      <span class="hero__label">Sound Designer & Composer</span>
+      <h1 class="hero__name">Kateryna Ivanchenko</h1>
+      <div class="hero__player">
+        <video controls preload="metadata" playsinline aria-label="Main showreel">
           <source src="showreel.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <section class="projects" id="projects">
-    <div class="container">
-      <h2 class="projects__title">Personal Projects</h2>
-      <p class="projects__description">
-        Below is a selection of recent projects that I've worked on.
-      </p>
-
-      <div class="projects__container">
-        <a class="project" href="https://github.com/..." target="_blank" rel="noreferrer">
-          <div class="project__media shadow-project">
-            <video class="project__video" controls preload="metadata" playsinline>
-              <source src="projects_photos/your_demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <h3>Project title</h3>
-          <p>Project description...</p>
-        </a>
-
-        <a class="project" href="https://github.com/..." target="_blank" rel="noreferrer">
-          <div class="project__media shadow-project">
-            <video class="project__video" controls preload="metadata" playsinline>
-              <source src="projects_photos/your_demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <h3>Project title</h3>
-          <p>Project description...</p>
-        </a>
-      </div>
-
-      <div class="projects__container">
-        <a class="project" href="https://github.com/..." target="_blank" rel="noreferrer">
-          <div class="project__media shadow-project">
-            <video class="project__video" controls preload="metadata" playsinline>
-              <source src="projects_photos/your_demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <h3>Project title</h3>
-          <p>Project description...</p>
-        </a>
-
-        <a class="project" href="https://github.com/..." target="_blank" rel="noreferrer">
-          <div class="project__media shadow-project">
-            <video class="project__video" controls preload="metadata" playsinline>
-              <source src="projects_photos/your_demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-          <h3>Project title</h3>
-          <p>Project description...</p>
-        </a>
-      </div>
-
+      <div class="hero__actions">
+        <div class="hero__action-group">
+          <a href="#showreels" class="btn btn--primary">
+            <i class='bx bx-film'></i> See Showreels
+          </a>
+          <span class="hero__action-note">
+            <i class='bx bx-user'></i> My personal work
+          </span>
+        </div>
+        <div class="hero__action-group">
+          <a href="#projects" class="btn btn--ghost">
+            <i class='bx bx-group'></i> See Projects
+          </a>
+          <span class="hero__action-note">
+            <i class='bx bx-sitemap'></i> Collaborative projects
+          </span>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <div class="hero" id="about">
-    <div class="container hero__container">
-      <div class="hero__about">
-        <h1 class="hero__title">Kateryna Ivanchenko</h1>
-        <h2 class=" hero__subtitle">Sound Designer & Composer</h2>
-        <p class="hero__description">
-          Very kind person, love to play games.
-          <br>
-          Obsessed with cats and dogs.
-          <br><br>
-          Currently studying at AP Academy (Stockholm)
-          <br>
-          Focus: Sound Design for video and games
-        </p>
-
-        <div class="hero__contact">
-          <div class="hero__contact-item">
-            <i class="bx bx-envelope"></i>
-            <a href="mailto:kativastudent@gmail.com" class="hero__contact-link">kativastudent@gmail.com</a>
-          </div>
-          <div class="hero__contact-item">
-            <i class="bx bx-phone"></i>
-            <a href="tel:+46790570481" class="hero__contact-link">+46790570481</a>
-          </div>
-        </div>
-
-        <div class="hero__links">
-          <a class="hero__link" href="https://www.linkedin.com/in/kateryna-ivanchenko-1207a2327/"><i
-              class='bx bxl-linkedin'></i></a>
-          <a class="hero__link" href="https://github.com/KaterynaIvanchenko"><i class='bx bxl-github'></i></a>
-        </div>
+  <!-- ===== SHOWREELS ===== -->
+  <section class="showreels section" id="showreels">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">My Work</span>
+        <h2 class="section-title">Showreels</h2>
+        <p class="section-desc">My personal showreels — solo sound design work across different genres.</p>
       </div>
 
-      <div class="hero__box">
-        <img class="hero__box-img" src="my_photo.jpg" alt="">
+      <div class="showreels__grid">
+        <div class="showreel-card reveal">
+          <span class="showreel-card__label">Demo Reel</span>
+          <div class="showreel-card__media">
+            <video controls preload="none" playsinline aria-label="Main demo reel">
+              <source src="showreel.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="showreel-card__title">Main Demo Reel</p>
+        </div>
+
+        <div class="showreel-card showreel-card--soon reveal">
+          <span class="showreel-card__label">Game Audio</span>
+          <div class="showreel-card__media">
+            <div class="showreel-card__soon-inner">
+              <i class='bx bx-time-five'></i>
+              <span>Coming Soon</span>
+            </div>
+          </div>
+          <p class="showreel-card__title">Game Audio Showreel</p>
+        </div>
+
+        <div class="showreel-card showreel-card--soon reveal">
+          <span class="showreel-card__label">Ambient / SFX</span>
+          <div class="showreel-card__media">
+            <div class="showreel-card__soon-inner">
+              <i class='bx bx-time-five'></i>
+              <span>Coming Soon</span>
+            </div>
+          </div>
+          <p class="showreel-card__title">Ambient & SFX Showreel</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-desc">A selection of collaborative work where I handled sound design and audio implementation.</p>
+      </div>
+
+      <div class="projects__list">
+        <article class="project-card reveal">
+          <div class="project-card__media">
+            <video controls preload="none" playsinline aria-label="Project audio sample">
+              <source src="projects/project_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="project-card__info">
+            <span class="project-card__meta">Sound Design · 2024</span>
+            <h3 class="project-card__title">Project Title</h3>
+            <p class="project-card__desc">
+              Brief description of the project and your specific contribution.
+              What challenges did you solve? What tools and techniques did you use?
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Expertise</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+
+      <div class="skills__grid">
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">DAWs</h3>
+          <div class="skill-group__tags">
+            <span class="skill-tag">Reaper</span>
+            <span class="skill-tag">Pro Tools</span>
+            <span class="skill-tag">Ableton Live</span>
+            <span class="skill-tag">Logic Pro</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">Specialisations</h3>
+          <div class="skill-group__tags">
+            <span class="skill-tag">Game Audio</span>
+            <span class="skill-tag">Foley</span>
+            <span class="skill-tag">SFX Design</span>
+            <span class="skill-tag">Dialogue Editing</span>
+            <span class="skill-tag">Ambient Sound</span>
+            <span class="skill-tag">Film Scoring</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">Tools & Plugins</h3>
+          <div class="skill-group__tags">
+            <span class="skill-tag">Kontakt</span>
+            <span class="skill-tag">iZotope RX</span>
+            <span class="skill-tag">FMOD</span>
+            <span class="skill-tag">Wwise</span>
+            <span class="skill-tag">Reaktor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Get to Know Me</span>
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="about__inner">
+        <div class="about__photo reveal">
+          <div class="about__photo-wrap">
+            <img src="my_photo.jpg" alt="Kateryna Ivanchenko">
+          </div>
+        </div>
+
+        <div class="about__content reveal">
+          <h3 class="about__name">Kateryna Ivanchenko</h3>
+          <p class="about__role">Sound Designer & Composer</p>
+          <p class="about__bio">
+            Very kind person, love to play games.
+            Obsessed with cats and dogs.
+            Currently studying at AP Academy in Stockholm,
+            with a focus on Sound Design for video and games.
+          </p>
+
+          <div class="about__contact">
+            <a href="mailto:kativastudent@gmail.com" class="about__contact-item">
+              <i class='bx bx-envelope'></i>
+              kativastudent@gmail.com
+            </a>
+            <a href="tel:+46790570481" class="about__contact-item">
+              <i class='bx bx-phone'></i>
+              +46 790 570 481
+            </a>
+          </div>
+
+          <div class="about__socials">
+            <a href="https://www.linkedin.com/in/kateryna-ivanchenko-1207a2327/" class="about__social" aria-label="LinkedIn" target="_blank" rel="noreferrer">
+              <i class='bx bxl-linkedin'></i>
+            </a>
+            <a href="https://github.com/KaterynaIvanchenko" class="about__social" aria-label="GitHub" target="_blank" rel="noreferrer">
+              <i class='bx bxl-github'></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">© 2024 Kateryna Ivanchenko · Sound Designer & Composer</p>
+    </div>
+  </footer>
 
   <script>
     (function () {
-      var video = document.getElementById('project-video');
-      if (!video) return;
+      // Header scroll behaviour
+      var header = document.getElementById('site-header');
+      window.addEventListener('scroll', function () {
+        header.toggleAttribute('data-scrolled', window.scrollY > 40);
+      }, { passive: true });
 
-      video.addEventListener('click', function (event) {
-        event.preventDefault();
-        if (video.paused) video.play();
-        else video.pause();
+      // Mobile nav
+      var hamburger = document.getElementById('hamburger');
+      var nav = document.getElementById('nav');
+
+      hamburger.addEventListener('click', function () {
+        var open = nav.classList.toggle('nav--open');
+        hamburger.classList.toggle('hamburger--open', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+        hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       });
+
+      nav.querySelectorAll('.nav__link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('nav--open');
+          hamburger.classList.remove('hamburger--open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open menu');
+        });
+      });
+
+      // Close mobile nav on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
+          nav.classList.remove('nav--open');
+          hamburger.classList.remove('hamburger--open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open menu');
+          hamburger.focus();
+        }
+      });
+
+      // Scroll reveal
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        revealEls.forEach(function (el) { observer.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      }
     })();
   </script>
 </body>

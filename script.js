@@ -155,28 +155,7 @@
     });
   });
 
-  /* ---------- 6. Hero reel: muted loop with an unmute control ---------- */
-  var heroVideo = document.getElementById('hero-video');
-  var unmute = document.getElementById('hero-unmute');
-
-  if (heroVideo && reduceMotion.matches) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-  }
-
-  if (heroVideo && unmute) {
-    unmute.addEventListener('click', function () {
-      heroVideo.muted = false;
-      heroVideo.loop = false;
-      heroVideo.controls = true;
-      heroVideo.currentTime = 0;
-      var p = heroVideo.play();
-      if (p && p.catch) p.catch(function () { /* autoplay policy — controls are visible now */ });
-      unmute.remove();
-    });
-  }
-
-  /* ---------- 7. Drifting light flares, scattered by the pointer ----------
+  /* ---------- 6. Drifting light flares, scattered by the pointer ----------
      Purely decorative, so it is built here instead of sitting in the markup.
 
      Performance contract — do not break it:
@@ -344,7 +323,7 @@
     }, { passive: true });
   })();
 
-  /* ---------- 8. Footer year ---------- */
+  /* ---------- 7. Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();

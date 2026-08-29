@@ -120,7 +120,10 @@ ul, ol { list-style: none; }
 
 /* ===== 4. Layout ===== */
 .container { max-width: 1180px; width: 100%; margin: 0 auto; padding: 0 24px; }
-.section { padding: 7rem 0; }
+/* Vertical rhythm follows the viewport height: full 7rem on a large display,
+   tightened to 4.5rem on a 13" laptop so an anchor jump does not land on an
+   empty band and push the media below the fold. */
+.section { padding: clamp(4.5rem, 9vh, 7rem) 0; }
 section[id] { scroll-margin-top: var(--header-h); }
 
 /* ===== 5. Waveform motif ===== */
@@ -164,7 +167,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   max-width: 62ch;
 }
 
-.section-header { margin-bottom: 3.5rem; }
+.section-header { margin-bottom: clamp(2rem, 4.5vh, 3.5rem); }
 
 /* ===== 7. Buttons ===== */
 .btn {
@@ -321,52 +324,68 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 
 /* ===== 10. Hero ===== */
-.hero { min-height: 100svh; display: flex; align-items: center; }
+.hero {
+  /* Height the hero text needs above the player, plus a little air below it.
+     Only binds on a short viewport — see .hero__player. */
+  --hero-chrome: 23.5rem;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
 
 .hero__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: calc(var(--header-h) + 3rem);
-  padding-bottom: 4.5rem;
+  padding-top: calc(var(--header-h) + clamp(1.25rem, 4vh, 3rem));
+  padding-bottom: clamp(2rem, 6vh, 4.5rem);
 }
 
-.hero__label {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-text);
-  margin: 1.25rem 0 0.9rem;
-}
-
+/* Name, then the role in amber, then the city — each step smaller.
+   Every vertical value here is capped by viewport height as well as width:
+   the reel is the point of the hero, so on a short screen the type gives up
+   room before the player does. */
 .hero__name {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-size: clamp(2.6rem, min(7vw, 7.2vh), 5.5rem);
   font-weight: 700;
   line-height: 0.96;
   letter-spacing: -0.03em;
+  margin-top: clamp(0.9rem, 2vh, 1.6rem);
 }
 .hero__role {
   display: block;
-  font-size: 0.3em;
-  font-weight: 500;
+  font-size: 0.34em;
+  font-weight: 600;
   letter-spacing: -0.005em;
+  color: var(--accent-text);
+  margin-top: clamp(0.6rem, 1.6vh, 0.9rem);
+}
+.hero__place {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: 0.9rem;
+  margin-top: clamp(0.5rem, 1.3vh, 0.75rem);
 }
 
 .hero__hairline {
   width: 72px; height: 3px;
   background: var(--accent);
   border-radius: 2px;
-  margin: 1.75rem 0 2.25rem;
+  margin: clamp(1rem, 2.4vh, 1.75rem) 0 clamp(1.2rem, 3vh, 2.25rem);
 }
 
+/* The reel opens the site, so it has to be whole and clickable on load.
+   --hero-chrome is the height everything above it needs plus a little air
+   below; what is left becomes the player's height, and 16/9 turns that into a
+   max-width. On a tall display the result passes 940px and nothing changes. */
 .hero__player {
   position: relative;
-  width: min(100%, 940px);
+  width: 100%;
+  max-width: min(940px, calc((100svh - var(--hero-chrome)) * 16 / 9));
   aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   overflow: hidden;
@@ -374,39 +393,22 @@ section[id] { scroll-margin-top: var(--header-h); }
   background: var(--ink-900);
   box-shadow: var(--shadow);
 }
-.hero__player video {
+/* Poster and reel are framed alike — contain, never crop, so nothing jumps
+   when the facade swaps one for the other. The double class outranks the
+   .video-embed img { object-fit: cover } used by the project thumbnails. */
+.hero__player.video-embed img,
+.hero__player.video-embed video {
   width: 100%; height: 100%;
   object-fit: contain;
   background: var(--ink-900);
 }
-
-.hero__unmute {
-  position: absolute;
-  right: 14px; bottom: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: var(--on-accent);
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-  transition: background var(--transition), transform var(--transition);
-}
-.hero__unmute:hover { background: var(--accent-hi); transform: translateY(-2px); }
-.hero__unmute i { font-size: 1.1rem; }
 
 .hero__actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 2.5rem;
+  margin-top: clamp(1.25rem, 3.4vh, 2.5rem);
 }
 
 /* ===== 11. Video facade (no third-party request until clicked) ===== */
@@ -451,76 +453,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .video-embed__btn:hover::before { transform: scale(1.08); }
 
-/* ===== 12. Cue sheet ===== */
-.cue-sheet {
-  margin-top: 2rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-}
-.cue-sheet__caption {
-  padding: 0.9rem 1.25rem;
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-text);
-}
-.cue-sheet li {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 1rem;
-  padding: 0.7rem 1.25rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-}
-.cue-sheet li:last-child { border-bottom: 0; }
-.cue-sheet__t {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--accent-text);
-}
-
-/* ===== 13. Showreels ===== */
-.showreels__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.showreel-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-}
-.showreel-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-  border-color: var(--border-strong);
-}
-.showreel-card__body { padding: 1.1rem 1.25rem 1.35rem; }
-.showreel-card__label {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-text);
-}
-.showreel-card__title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: 0.35rem;
-}
-.showreel-card__meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; }
-
-/* ===== 14. Projects ===== */
+/* ===== 12. Projects ===== */
 .projects__list { display: flex; flex-direction: column; gap: 2rem; }
 
 .project-card {
@@ -620,7 +553,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .project-card__link:hover { gap: 0.75rem; }
 
-/* ===== 15. Implementation ===== */
+/* ===== 13. Implementation ===== */
 .impl__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -638,7 +571,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .impl-card__stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.85rem 0 1rem; }
 .impl-card__desc { font-size: 0.9rem; color: var(--text-muted); }
 
-/* ===== 16. Skills ===== */
+/* ===== 14. Skills ===== */
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -678,7 +611,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 .skill-tag--lang { display: flex; justify-content: space-between; gap: 1rem; width: 100%; }
 .skill-tag--lang b { font-weight: 500; color: var(--text); }
 
-/* ===== 17. About ===== */
+/* ===== 15. About ===== */
 .about__inner {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -728,7 +661,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   padding-top: 0.2rem;
 }
 
-/* ===== 18. References ===== */
+/* ===== 16. References ===== */
 .references__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -759,7 +692,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .reference-card__who b { display: block; font-weight: 500; color: var(--text); }
 
-/* ===== 19. Contact ===== */
+/* ===== 17. Contact ===== */
 .contact__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
@@ -813,7 +746,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .contact__social:hover { border-color: var(--accent); color: var(--accent-text); background: var(--accent-soft); }
 
-/* ===== 20. Footer ===== */
+/* ===== 18. Footer ===== */
 .footer {
   padding: 2.5rem 0;
   background: var(--bg);
@@ -833,7 +766,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   color: var(--text-muted);
 }
 
-/* ===== 21. Scroll reveal ===== */
+/* ===== 19. Scroll reveal ===== */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -841,7 +774,7 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .reveal.is-visible { opacity: 1; transform: none; }
 
-/* ===== 22. TODO markers — these must never reach production ===== */
+/* ===== 20. TODO markers — these must never reach production ===== */
 .todo {
   display: inline-block;
   font-family: var(--font-mono);
@@ -853,7 +786,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   border: 1px dashed #B4650A;
 }
 
-/* ===== 23. Responsive ===== */
+/* ===== 21. Responsive ===== */
 @media (max-width: 900px) {
   .about__inner,
   .contact__inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -891,12 +824,11 @@ section[id] { scroll-margin-top: var(--header-h); }
   .section { padding: 5rem 0; }
   .wave-rule { margin: -1.5rem auto 2.5rem; }
   .hero__content { padding-top: calc(var(--header-h) + 2rem); }
-  .cue-sheet li { grid-template-columns: 4.5rem 1fr; gap: 0.75rem; font-size: 0.85rem; }
   .about__photo { max-width: 280px; margin: 0 auto; }
   .about__photo::after { display: none; }
 }
 
-/* ===== 24. Reduced motion ===== */
+/* ===== 22. Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -906,17 +838,13 @@ section[id] { scroll-margin-top: var(--header-h); }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
   .btn:hover,
-  .showreel-card:hover,
-  .project-card:hover,
-  .hero__unmute:hover { transform: none; }
+  .project-card:hover { transform: none; }
 }
 
-/* ===== 25. Additions ===== */
+/* ===== 23. Additions ===== */
 .section--surface { background: var(--surface); }
 
 .project-card__media { position: relative; min-width: 0; }
-
-.showreel-card--wide { grid-column: 1 / -1; }
 
 /* Media fills the card height beside the credits column (desktop only). */
 @media (min-width: 901px) {
@@ -928,7 +856,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   }
 }
 
-/* ===== 26. Edge glow on dark surfaces =====
+/* ===== 24. Edge glow on dark surfaces =====
    Warm light spilling in from the left and right edges of every dark zone.
    `isolation: isolate` matters: it makes the zone a stacking context so the
    z-index:-1 layer paints ABOVE the zone's own background but BELOW its
@@ -969,7 +897,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   }
 }
 
-/* ===== 27. Drifting light flares on dark zones =====
+/* ===== 25. Drifting light flares on dark zones =====
    Elements are injected and driven by script.js. They cover the whole dark
    background — sides, middle and centre — not just the edges.
 

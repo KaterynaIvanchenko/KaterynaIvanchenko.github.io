@@ -58,7 +58,7 @@
       </a>
 
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="#showreel" class="nav__link">Reel</a>
+        <a href="#home" class="nav__link">Home</a>
         <a href="#projects" class="nav__link">Projects</a>
         <a href="#implementation" class="nav__link">Implementation</a>
         <a href="#skills" class="nav__link">Skills</a>
@@ -82,73 +82,28 @@
           Open for LIA-praktik &amp; junior roles · Stockholm · from <span class="todo">MONTH YEAR</span>
         </p>
 
-        <p class="hero__label">Sound Designer &amp; Composer</p>
-
         <h1 class="hero__name">
           Kateryna Ivanchenko
-          <span class="hero__role">Game audio, SFX &amp; foley — Stockholm, Sweden</span>
+          <span class="hero__role">Sound Designer &amp; Composer</span>
         </h1>
+        <p class="hero__place">Stockholm, Sweden</p>
 
         <div class="hero__hairline" aria-hidden="true"></div>
 
-        <div class="hero__player">
-          <video id="hero-video" poster="posters/showreel_poster.jpg"
-                 autoplay muted loop playsinline preload="metadata"
-                 aria-label="Showreel title card">
-            <source src="showreel.mp4" type="video/mp4">
-          </video>
-          <button class="hero__unmute" id="hero-unmute" type="button">
-            <i class='bx bx-volume-full' aria-hidden="true"></i> Play with sound
-          </button>
+        <!-- The reel itself: poster + one Play button, no autoplay loop. -->
+        <div class="hero__player video-embed"
+             data-provider="file"
+             data-src="showreel.mp4"
+             data-title="Kateryna Ivanchenko — sound design showreel">
+          <img src="posters/showreel_poster.jpg" alt="" width="1280" height="853" fetchpriority="high">
+          <button class="video-embed__btn" type="button">Play</button>
         </div>
 
         <div class="hero__actions">
-          <a href="#showreel" class="btn btn--primary"><i class='bx bx-film' aria-hidden="true"></i> Watch the reel</a>
           <a href="cv/Kateryna_Ivanchenko_CV.pdf" class="btn btn--ghost" download>
             <i class='bx bx-download' aria-hidden="true"></i> Download CV (PDF)
           </a>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== SHOWREEL ===== -->
-    <section class="showreels section zone zone--dark" id="showreel">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-label">My work</span>
-          <h2 class="section-title">Showreel</h2>
-          <p class="section-desc">
-            Solo sound design work. Every clip below is labelled with exactly what I did —
-            and, where the work was collaborative, what I did not do.
-          </p>
-        </div>
-
-        <div class="showreels__grid">
-          <article class="showreel-card showreel-card--wide reveal">
-            <div class="video-embed"
-                 data-provider="file"
-                 data-src="showreel.mp4"
-                 data-title="Kateryna Ivanchenko — sound design showreel">
-              <img src="posters/showreel_poster.jpg" alt="" width="1280" height="853" loading="lazy">
-              <button class="video-embed__btn" type="button">Play showreel</button>
-            </div>
-            <div class="showreel-card__body">
-              <p class="showreel-card__label">Sound design</p>
-              <h3 class="showreel-card__title">Main showreel</h3>
-              <p class="showreel-card__meta">
-                <span class="todo">REPLACE: showreel.mp4 is a 14-second title card, not a reel. Upload the full 2–3 min reel to Vimeo, then set data-provider="vimeo" and data-id="ID".</span>
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <ol class="cue-sheet reveal">
-          <li class="cue-sheet__caption">Cue sheet — what you are hearing</li>
-          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
-          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
-          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
-          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
-        </ol>
       </div>
     </section>
 

@@ -3,308 +3,438 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kateryna Ivanchenko — Sound Designer & Composer specializing in game audio, film, and interactive media.">
-  <meta property="og:title" content="Kateryna Ivanchenko | Sound Designer">
-  <meta property="og:description" content="Sound Designer & Composer. Game audio, film, SFX, foley.">
-  <meta property="og:image" content="https://katerynaivanchenko.github.io/my_photo.jpg">
-  <meta property="og:url" content="https://katerynaivanchenko.github.io">
+  <title>Kateryna Ivanchenko — Sound Designer &amp; Composer, Stockholm</title>
+  <meta name="description" content="Kateryna Ivanchenko — sound designer and composer based in Stockholm, Sweden. Game audio, SFX, foley and audio implementation in Unity, FMOD and Wwise.">
+  <link rel="canonical" href="https://katerynaivanchenko.github.io/">
+
+  <meta property="og:title" content="Kateryna Ivanchenko — Sound Designer &amp; Composer">
+  <meta property="og:description" content="Game audio, SFX, foley and audio implementation. Based in Stockholm, Sweden.">
+  <meta property="og:image" content="https://katerynaivanchenko.github.io/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://katerynaivanchenko.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Kateryna Ivanchenko">
-  <link rel="canonical" href="https://katerynaivanchenko.github.io/">
-  <title>Kateryna Ivanchenko | Sound Designer</title>
-  <link rel="icon" type="image/png" href="python_icon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400..600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kateryna Ivanchenko",
+    "jobTitle": "Sound Designer & Composer",
+    "url": "https://katerynaivanchenko.github.io/",
+    "image": "https://katerynaivanchenko.github.io/my_photo.jpg",
+    "email": "mailto:kativastudent@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Stockholm",
+      "addressCountry": "SE"
+    },
+    "knowsAbout": ["Sound Design", "Game Audio", "Foley", "SFX Design", "Audio Implementation", "FMOD", "Wwise"],
+    "sameAs": [
+      "https://www.linkedin.com/in/kateryna-ivanchenko-1207a2327/",
+      "https://github.com/KaterynaIvanchenko"
+    ]
+  }
+  </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ===== HEADER ===== -->
-  <header class="site-header" id="site-header">
+  <header class="site-header" id="site-header" data-theme="dark">
     <div class="header-inner container">
-      <a href="#home" class="logo">
-        <img src="logo.png" alt="Kateryna Ivanchenko">
+      <a href="#home" class="logo" aria-label="Kateryna Ivanchenko — home">
+        <img src="logo.png" alt="Kateryna Ivanchenko" width="995" height="299">
       </a>
 
-      <nav class="nav" id="nav">
-        <a href="#home" class="nav__link">Home</a>
-        <a href="#showreels" class="nav__link">Showreels</a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#showreel" class="nav__link">Reel</a>
         <a href="#projects" class="nav__link">Projects</a>
+        <a href="#implementation" class="nav__link">Implementation</a>
         <a href="#skills" class="nav__link">Skills</a>
         <a href="#about" class="nav__link">About</a>
+        <a href="#contact" class="nav__link">Contact</a>
       </nav>
 
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero__content container">
-      <span class="hero__label">Sound Designer & Composer</span>
-      <h1 class="hero__name">Kateryna Ivanchenko</h1>
-      <div class="hero__player">
-        <video controls preload="metadata" playsinline aria-label="Main showreel">
-          <source src="showreel.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="hero__actions">
-        <div class="hero__action-group">
-          <a href="#showreels" class="btn btn--primary">
-            <i class='bx bx-film'></i> See Showreels
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero zone zone--dark" id="home">
+      <div class="hero__content container">
+        <p class="availability">
+          <span class="availability__dot" aria-hidden="true"></span>
+          Open for LIA-praktik &amp; junior roles · Stockholm · from <span class="todo">MONTH YEAR</span>
+        </p>
+
+        <p class="hero__label">Sound Designer &amp; Composer</p>
+
+        <h1 class="hero__name">
+          Kateryna Ivanchenko
+          <span class="hero__role">Game audio, SFX &amp; foley — Stockholm, Sweden</span>
+        </h1>
+
+        <div class="hero__hairline" aria-hidden="true"></div>
+
+        <div class="hero__player">
+          <video id="hero-video" poster="posters/showreel_poster.jpg"
+                 autoplay muted loop playsinline preload="metadata"
+                 aria-label="Showreel title card">
+            <source src="showreel.mp4" type="video/mp4">
+          </video>
+          <button class="hero__unmute" id="hero-unmute" type="button">
+            <i class='bx bx-volume-full' aria-hidden="true"></i> Play with sound
+          </button>
+        </div>
+
+        <div class="hero__actions">
+          <a href="#showreel" class="btn btn--primary"><i class='bx bx-film' aria-hidden="true"></i> Watch the reel</a>
+          <a href="cv/Kateryna_Ivanchenko_CV.pdf" class="btn btn--ghost" download>
+            <i class='bx bx-download' aria-hidden="true"></i> Download CV (PDF)
           </a>
-          <span class="hero__action-note">
-            <i class='bx bx-user'></i> My personal work
-          </span>
-        </div>
-        <div class="hero__action-group">
-          <a href="#projects" class="btn btn--ghost">
-            <i class='bx bx-group'></i> See Projects
-          </a>
-          <span class="hero__action-note">
-            <i class='bx bx-sitemap'></i> Collaborative projects
-          </span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== SHOWREELS ===== -->
-  <section class="showreels section" id="showreels">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">My Work</span>
-        <h2 class="section-title">Showreels</h2>
-        <p class="section-desc">My personal showreels — solo sound design work across different genres.</p>
-      </div>
-
-      <div class="showreels__grid">
-        <div class="showreel-card reveal">
-          <span class="showreel-card__label">Demo Reel</span>
-          <div class="showreel-card__media">
-            <video controls preload="none" playsinline aria-label="Main demo reel">
-              <source src="showreel.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="showreel-card__title">Main Demo Reel</p>
-        </div>
-
-        <div class="showreel-card showreel-card--soon reveal">
-          <span class="showreel-card__label">Game Audio</span>
-          <div class="showreel-card__media">
-            <div class="showreel-card__soon-inner">
-              <i class='bx bx-time-five'></i>
-              <span>Coming Soon</span>
-            </div>
-          </div>
-          <p class="showreel-card__title">Game Audio Showreel</p>
-        </div>
-
-        <div class="showreel-card showreel-card--soon reveal">
-          <span class="showreel-card__label">Ambient / SFX</span>
-          <div class="showreel-card__media">
-            <div class="showreel-card__soon-inner">
-              <i class='bx bx-time-five'></i>
-              <span>Coming Soon</span>
-            </div>
-          </div>
-          <p class="showreel-card__title">Ambient & SFX Showreel</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section class="projects section" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Portfolio</span>
-        <h2 class="section-title">Projects</h2>
-        <p class="section-desc">A selection of collaborative work where I handled sound design and audio implementation.</p>
-      </div>
-
-      <div class="projects__list">
-        <article class="project-card reveal">
-          <div class="project-card__media">
-            <video controls preload="none" playsinline aria-label="Project audio sample">
-              <source src="projects/project_1.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="project-card__info">
-            <span class="project-card__meta">Sound Design · 2024</span>
-            <h3 class="project-card__title">Project Title</h3>
-            <p class="project-card__desc">
-              Brief description of the project and your specific contribution.
-              What challenges did you solve? What tools and techniques did you use?
-            </p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section class="skills section" id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Expertise</span>
-        <h2 class="section-title">Skills</h2>
-      </div>
-
-      <div class="skills__grid">
-        <div class="skill-group reveal">
-          <h3 class="skill-group__title">DAWs</h3>
-          <div class="skill-group__tags">
-            <span class="skill-tag">Reaper</span>
-            <span class="skill-tag">Pro Tools</span>
-            <span class="skill-tag">Ableton Live</span>
-            <span class="skill-tag">Logic Pro</span>
-          </div>
-        </div>
-
-        <div class="skill-group reveal">
-          <h3 class="skill-group__title">Specialisations</h3>
-          <div class="skill-group__tags">
-            <span class="skill-tag">Game Audio</span>
-            <span class="skill-tag">Foley</span>
-            <span class="skill-tag">SFX Design</span>
-            <span class="skill-tag">Dialogue Editing</span>
-            <span class="skill-tag">Ambient Sound</span>
-            <span class="skill-tag">Film Scoring</span>
-          </div>
-        </div>
-
-        <div class="skill-group reveal">
-          <h3 class="skill-group__title">Tools & Plugins</h3>
-          <div class="skill-group__tags">
-            <span class="skill-tag">Kontakt</span>
-            <span class="skill-tag">iZotope RX</span>
-            <span class="skill-tag">FMOD</span>
-            <span class="skill-tag">Wwise</span>
-            <span class="skill-tag">Reaktor</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about section" id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">Get to Know Me</span>
-        <h2 class="section-title">About</h2>
-      </div>
-
-      <div class="about__inner">
-        <div class="about__photo reveal">
-          <div class="about__photo-wrap">
-            <img src="my_photo.jpg" alt="Kateryna Ivanchenko">
-          </div>
-        </div>
-
-        <div class="about__content reveal">
-          <h3 class="about__name">Kateryna Ivanchenko</h3>
-          <p class="about__role">Sound Designer & Composer</p>
-          <p class="about__bio">
-            Very kind person, love to play games.
-            Obsessed with cats and dogs.
-            Currently studying at AP Academy in Stockholm,
-            with a focus on Sound Design for video and games.
+    <!-- ===== SHOWREEL ===== -->
+    <section class="showreels section zone zone--dark" id="showreel">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">My work</span>
+          <h2 class="section-title">Showreel</h2>
+          <p class="section-desc">
+            Solo sound design work. Every clip below is labelled with exactly what I did —
+            and, where the work was collaborative, what I did not do.
           </p>
+        </div>
 
-          <div class="about__contact">
-            <a href="mailto:kativastudent@gmail.com" class="about__contact-item">
-              <i class='bx bx-envelope'></i>
-              kativastudent@gmail.com
-            </a>
-            <a href="tel:+46790570481" class="about__contact-item">
-              <i class='bx bx-phone'></i>
-              +46 790 570 481
-            </a>
+        <div class="showreels__grid">
+          <article class="showreel-card showreel-card--wide reveal">
+            <div class="video-embed"
+                 data-provider="file"
+                 data-src="showreel.mp4"
+                 data-title="Kateryna Ivanchenko — sound design showreel">
+              <img src="posters/showreel_poster.jpg" alt="" width="1280" height="853" loading="lazy">
+              <button class="video-embed__btn" type="button">Play showreel</button>
+            </div>
+            <div class="showreel-card__body">
+              <p class="showreel-card__label">Sound design</p>
+              <h3 class="showreel-card__title">Main showreel</h3>
+              <p class="showreel-card__meta">
+                <span class="todo">REPLACE: showreel.mp4 is a 14-second title card, not a reel. Upload the full 2–3 min reel to Vimeo, then set data-provider="vimeo" and data-id="ID".</span>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <ol class="cue-sheet reveal">
+          <li class="cue-sheet__caption">Cue sheet — what you are hearing</li>
+          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
+          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
+          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
+          <li><span class="cue-sheet__t">00:00</span><span class="todo">Scene / clip name — what I designed</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="projects section zone zone--light" id="projects">
+      <div class="wave-rule" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Portfolio</span>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-desc">
+            Selected pieces. Each one lists the engine, the middleware and my exact contribution,
+            so there is no guessing about who did what.
+          </p>
+        </div>
+
+        <div class="projects__list">
+
+          <article class="project-card reveal">
+            <div class="project-card__media">
+              <div class="video-embed"
+                   data-provider="file"
+                   data-src="projects/project_1.mp4"
+                   data-title="AURA7">
+                <img src="posters/aura7_poster.jpg" alt="" width="1280" height="720" loading="lazy">
+                <button class="video-embed__btn" type="button">Play</button>
+              </div>
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">AURA7</h3>
+              <dl class="project-card__credits">
+                <dt>Year</dt>      <dd><span class="todo">YEAR</span></dd>
+                <dt>Type</dt>      <dd><span class="todo">Short film / spot / experimental piece</span></dd>
+                <dt>Role</dt>      <dd><span class="todo">e.g. Sound Designer (solo audio)</span></dd>
+                <dt>Team</dt>      <dd><span class="todo">Solo, or: team of N at AP Academy</span></dd>
+                <dt>Tools</dt>     <dd><span class="todo">e.g. Reaper, iZotope RX</span></dd>
+              </dl>
+              <ul class="project-card__did">
+                <li><span class="todo">What I did — be specific: designed all textures from original recordings</span></li>
+                <li><span class="todo">What I did — second concrete contribution</span></li>
+                <li><span class="todo">What I did — third concrete contribution</span></li>
+                <li class="is-credit"><span class="todo">What I did NOT do — e.g. picture edit by NAME</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- TODO: 3–5 more project cards. Copy the block above.
+               Aim for range: game audio, linear/film, foley, ambience/experimental. -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IMPLEMENTATION ===== -->
+    <section class="section zone zone--dark" id="implementation">
+      <div class="wave-rule" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">In engine</span>
+          <h2 class="section-title">Implementation</h2>
+          <p class="section-desc">
+            Audio is not finished when the file is exported. These captures show the systems
+            running in engine — states, parameters and switches doing the work.
+          </p>
+        </div>
+
+        <div class="impl__grid">
+          <article class="impl-card reveal">
+            <div class="video-embed"
+                 data-provider="file"
+                 data-src=""
+                 data-title="Implementation demo">
+              <img src="posters/aura7_poster.jpg" alt="" width="1280" height="720" loading="lazy">
+              <button class="video-embed__btn" type="button">Play demo</button>
+            </div>
+            <div class="impl-card__body">
+              <h3 class="impl-card__title"><span class="todo">Demo title</span></h3>
+              <div class="impl-card__stack">
+                <span class="skill-tag">Unity</span>
+                <span class="skill-tag">FMOD Studio</span>
+              </div>
+              <p class="impl-card__desc">
+                <span class="todo">Describe the SYSTEM, not the sounds: what states/parameters drive it and why you built it that way. E.g. "State-based ambience with an RTPC on player speed; footstep switch driven by surface tag."</span>
+              </p>
+            </div>
+          </article>
+
+          <!-- TODO: second card for the Wwise demo, same structure. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="skills section section--surface zone zone--light" id="skills">
+      <div class="wave-rule" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Expertise</span>
+          <h2 class="section-title">Skills</h2>
+        </div>
+
+        <div class="skills__grid">
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">DAWs</h3>
+            <div class="skill-group__tags">
+              <span class="skill-tag">Reaper</span>
+              <span class="skill-tag">Pro Tools</span>
+              <span class="skill-tag">Ableton Live</span>
+              <span class="skill-tag">Logic Pro</span>
+            </div>
           </div>
 
-          <div class="about__socials">
-            <a href="https://www.linkedin.com/in/kateryna-ivanchenko-1207a2327/" class="about__social" aria-label="LinkedIn" target="_blank" rel="noreferrer">
-              <i class='bx bxl-linkedin'></i>
-            </a>
-            <a href="https://github.com/KaterynaIvanchenko" class="about__social" aria-label="GitHub" target="_blank" rel="noreferrer">
-              <i class='bx bxl-github'></i>
-            </a>
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Engines &amp; middleware</h3>
+            <div class="skill-group__tags">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">FMOD Studio</span>
+              <span class="skill-tag">Wwise</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Specialisations</h3>
+            <div class="skill-group__tags">
+              <span class="skill-tag">Game Audio</span>
+              <span class="skill-tag">SFX Design</span>
+              <span class="skill-tag">Foley</span>
+              <span class="skill-tag">Ambience</span>
+              <span class="skill-tag">Dialogue Editing</span>
+              <span class="skill-tag">Composition</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Tools</h3>
+            <div class="skill-group__tags">
+              <span class="skill-tag">iZotope RX</span>
+              <span class="skill-tag">Kontakt</span>
+              <span class="skill-tag">Reaktor</span>
+              <span class="skill-tag">Field recording</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group__title">Languages</h3>
+            <div class="skill-group__tags">
+              <span class="skill-tag skill-tag--lang"><b>Українська</b> Native</span>
+              <span class="skill-tag skill-tag--lang"><b>English</b> <span class="todo">LEVEL</span></span>
+              <span class="skill-tag skill-tag--lang"><b>Svenska</b> <span class="todo">LEVEL</span></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about section zone zone--light" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">About</span>
+          <h2 class="section-title">Who I am</h2>
+        </div>
+
+        <div class="about__inner">
+          <div class="about__photo reveal">
+            <div class="about__photo-wrap">
+              <img src="my_photo.jpg" alt="Portrait of Kateryna Ivanchenko" width="800" height="800">
+            </div>
+          </div>
+
+          <div class="about__content reveal">
+            <p class="about__bio">
+              I am a sound designer and composer based in Stockholm. I work on audio for games
+              and video — designing effects from original recordings, building ambiences, and
+              implementing them so they react to what is actually happening on screen.
+            </p>
+            <p class="about__bio">
+              <span class="todo">Add 2–3 sentences on what makes YOUR sound design distinctive: how you approach a brief, what you like recording, what you are trying to get good at. This is the paragraph a recruiter remembers.</span>
+            </p>
+
+            <dl class="about__facts">
+              <dt>Based</dt>
+              <dd>Stockholm, Sweden</dd>
+
+              <dt>Studying</dt>
+              <dd><span class="todo">EXACT PROGRAMME NAME</span> · AP Academy, Stockholm · graduating <span class="todo">MONTH YEAR</span></dd>
+
+              <dt>Looking for</dt>
+              <dd>LIA-praktik and junior sound design roles, from <span class="todo">MONTH YEAR</span></dd>
+
+              <dt>Work permit</dt>
+              <dd><span class="todo">CONFIRM WORDING</span> Full right to work in Sweden — no permit sponsorship required.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REFERENCES ===== -->
+    <section class="section section--surface zone zone--light" id="references">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Referenser</span>
+          <h2 class="section-title">References</h2>
+          <p class="section-desc">
+            Swedish employers ask for references almost every time. Two short quotes here
+            answer the question before it is asked.
+          </p>
+        </div>
+
+        <div class="references__grid">
+          <article class="reference-card reveal">
+            <p class="reference-card__quote">
+              <span class="todo">Short quote from a tutor or a project lead — two sentences is plenty.</span>
+            </p>
+            <p class="reference-card__who">
+              <b><span class="todo">Name</span></b>
+              <span class="todo">Role, organisation</span>
+            </p>
+          </article>
+
+          <!-- TODO: second reference card, or delete this whole section
+               if there is nothing real to put here yet. An empty References
+               section is worse than no References section. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section zone zone--light" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Get in touch</span>
+          <h2 class="section-title">Let's work together</h2>
+        </div>
+
+        <div class="contact__inner">
+          <div class="reveal">
+            <a class="contact__mail" href="mailto:kativastudent@gmail.com">kativastudent@gmail.com</a>
+
+            <div class="contact__list">
+              <a class="contact__item" href="tel:+46790570481">
+                <i class='bx bx-phone' aria-hidden="true"></i> +46 790 570 481
+              </a>
+              <p class="contact__item">
+                <i class='bx bx-map' aria-hidden="true"></i> Stockholm, Sweden
+              </p>
+            </div>
+
+            <div class="contact__socials">
+              <a class="contact__social" href="https://www.linkedin.com/in/kateryna-ivanchenko-1207a2327/"
+                 target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class='bx bxl-linkedin' aria-hidden="true"></i>
+              </a>
+              <a class="contact__social" href="https://github.com/KaterynaIvanchenko"
+                 target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class='bx bxl-github' aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <p class="availability">
+              <span class="availability__dot" aria-hidden="true"></span>
+              Available from <span class="todo">MONTH YEAR</span>
+            </p>
+            <div class="contact__list">
+              <a href="cv/Kateryna_Ivanchenko_CV.pdf" class="btn btn--primary" download>
+                <i class='bx bx-download' aria-hidden="true"></i> Download CV (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <p class="footer__text">© 2024 Kateryna Ivanchenko · Sound Designer & Composer</p>
+  <footer class="footer zone zone--dark">
+    <div class="footer__inner container">
+      <p class="footer__text">© <span id="year">2026</span> Kateryna Ivanchenko</p>
+      <p class="footer__text">Sound Designer &amp; Composer · Stockholm</p>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      // Header scroll behaviour
-      var header = document.getElementById('site-header');
-      window.addEventListener('scroll', function () {
-        header.toggleAttribute('data-scrolled', window.scrollY > 40);
-      }, { passive: true });
-
-      // Mobile nav
-      var hamburger = document.getElementById('hamburger');
-      var nav = document.getElementById('nav');
-
-      hamburger.addEventListener('click', function () {
-        var open = nav.classList.toggle('nav--open');
-        hamburger.classList.toggle('hamburger--open', open);
-        hamburger.setAttribute('aria-expanded', String(open));
-        hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      });
-
-      nav.querySelectorAll('.nav__link').forEach(function (link) {
-        link.addEventListener('click', function () {
-          nav.classList.remove('nav--open');
-          hamburger.classList.remove('hamburger--open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.setAttribute('aria-label', 'Open menu');
-        });
-      });
-
-      // Close mobile nav on Escape
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
-          nav.classList.remove('nav--open');
-          hamburger.classList.remove('hamburger--open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.setAttribute('aria-label', 'Open menu');
-          hamburger.focus();
-        }
-      });
-
-      // Scroll reveal
-      var revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        revealEls.forEach(function (el) { observer.observe(el); });
-      } else {
-        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-      }
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

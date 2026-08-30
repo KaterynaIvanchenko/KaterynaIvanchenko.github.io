@@ -11,7 +11,7 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- 1. Header: scrolled state + zone-aware theme ---------- */
-  var zones = Array.prototype.slice.call(document.querySelectorAll('.zone'));
+  var zones = document.querySelectorAll('.zone');
   var ticking = false;
 
   function syncHeader() {
@@ -70,15 +70,21 @@
     if (e.key !== 'Tab' || !nav.classList.contains('nav--open')) return;
     var items = nav.querySelectorAll('.nav__link');
     if (!items.length) return;
-    var first = items[0];
-    var last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      hamburger.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
+    // Shift-Tab off the first link, or Tab off the last, returns to the toggle.
+    var edge = e.shiftKey ? items[0] : items[items.length - 1];
+    if (document.activeElement === edge) {
       e.preventDefault();
       hamburger.focus();
     }
+  });
+
+  // The hamburger sits outside .nav, so the trap above never sees a Tab from it.
+  hamburger.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || e.shiftKey || !nav.classList.contains('nav--open')) return;
+    var first = nav.querySelector('.nav__link');
+    if (!first) return;
+    e.preventDefault();
+    first.focus();
   });
 
   // A resize back to desktop must not leave the body scroll-locked.
@@ -132,6 +138,10 @@
       var title = box.dataset.title || 'Video';
       var node;
 
+      // An unfilled facade keeps its poster: replacing it with an empty
+      // <video>/<iframe> is destructive and cannot be undone without a reload.
+      if (provider === 'file' ? !box.dataset.src : !id) return;
+
       if (provider === 'file') {
         node = document.createElement('video');
         node.src = box.dataset.src;
@@ -147,7 +157,6 @@
         node.title = title;
         node.allow = 'autoplay; fullscreen; picture-in-picture';
         node.setAttribute('allowfullscreen', '');
-        node.setAttribute('loading', 'lazy');
       }
 
       box.innerHTML = '';

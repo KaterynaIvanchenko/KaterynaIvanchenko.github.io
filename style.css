@@ -24,6 +24,8 @@
   --font-mono:    'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
 
   --header-h:   68px;
+  /* Section top padding. Hoisted because the anchor offset below subtracts it. */
+  --section-pad: clamp(4.5rem, 9vh, 7rem);
   --radius:     14px;
   --radius-sm:  8px;
   --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -108,23 +110,18 @@ ul, ol { list-style: none; }
 }
 .skip-link:focus { top: 12px; }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* ===== 4. Layout ===== */
 .container { max-width: 1180px; width: 100%; margin: 0 auto; padding: 0 24px; }
 /* Vertical rhythm follows the viewport height: full 7rem on a large display,
    tightened to 4.5rem on a 13" laptop so an anchor jump does not land on an
    empty band and push the media below the fold. */
-.section { padding: clamp(4.5rem, 9vh, 7rem) 0; }
-section[id] { scroll-margin-top: var(--header-h); }
+.section { padding: var(--section-pad) 0; }
+/* A nav jump lands on the section's LABEL, not on its top edge: the section's
+   own top padding is subtracted so the heading sits just under the header and
+   the media below it stays on screen. On a short laptop display that padding is
+   larger than the offset, so the value goes negative — which is exactly right,
+   it means "scroll a little past the section boundary". */
+section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-pad)); }
 
 /* ===== 6. Section typography ===== */
 .section-label {
@@ -235,7 +232,6 @@ section[id] { scroll-margin-top: var(--header-h); }
   height: 34px;
   width: auto;
   filter: var(--hdr-logo);
-  opacity: 1;
   transition: filter var(--transition);
 }
 
@@ -523,22 +519,6 @@ section[id] { scroll-margin-top: var(--header-h); }
 }
 .project-card__did li.is-credit::before { background: var(--text-muted); opacity: 0.5; }
 
-.project-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: auto;
-  padding-top: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-text);
-  align-self: flex-start;
-  transition: gap var(--transition);
-}
-.project-card__link:hover { gap: 0.75rem; }
-
 /* ===== 13. Implementation ===== */
 .impl__grid {
   display: grid;
@@ -798,16 +778,25 @@ section[id] { scroll-margin-top: var(--header-h); }
     justify-content: center;
     gap: 2rem;
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Off-screen is not hidden: without this the six links stay focusable and
+       are still announced while the panel is closed. The delay keeps the
+       slide-out visible for the length of the transition. */
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0.35s;
     z-index: 999;
   }
-  .nav--open { transform: translateX(0); }
+  .nav--open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  }
   .nav__link { font-size: 1.05rem; letter-spacing: 0.08em; opacity: 0.9; }
   .hamburger { display: flex; }
 
   body.nav-lock { overflow: hidden; }
 
-  .section { padding: 5rem 0; }
+  :root { --section-pad: 5rem; }
   .hero__content { padding-top: calc(var(--header-h) + 2rem); }
   .about__photo { max-width: 280px; margin: 0 auto; }
   .about__photo::after { display: none; }
@@ -826,7 +815,7 @@ section[id] { scroll-margin-top: var(--header-h); }
   .project-card:hover { transform: none; }
 }
 
-/* ===== 23. Additions ===== */
+/* ===== 23. Surface variant + project media sizing ===== */
 .section--surface { background: var(--surface); }
 
 .project-card__media { position: relative; min-width: 0; }

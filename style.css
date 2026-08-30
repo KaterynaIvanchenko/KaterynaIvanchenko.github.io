@@ -126,20 +126,6 @@ ul, ol { list-style: none; }
 .section { padding: clamp(4.5rem, 9vh, 7rem) 0; }
 section[id] { scroll-margin-top: var(--header-h); }
 
-/* ===== 5. Waveform motif ===== */
-.wave-rule {
-  width: min(340px, 62%);
-  height: 30px;
-  margin: -2.5rem auto 3.25rem;
-  background-color: var(--accent);
-  opacity: 0.5;
-  -webkit-mask: url("wave.svg") center / contain no-repeat;
-          mask: url("wave.svg") center / contain no-repeat;
-}
-@supports not ((-webkit-mask-image: url("wave.svg")) or (mask-image: url("wave.svg"))) {
-  .wave-rule { display: none; }
-}
-
 /* ===== 6. Section typography ===== */
 .section-label {
   display: block;
@@ -822,7 +808,6 @@ section[id] { scroll-margin-top: var(--header-h); }
   body.nav-lock { overflow: hidden; }
 
   .section { padding: 5rem 0; }
-  .wave-rule { margin: -1.5rem auto 2.5rem; }
   .hero__content { padding-top: calc(var(--header-h) + 2rem); }
   .about__photo { max-width: 280px; margin: 0 auto; }
   .about__photo::after { display: none; }

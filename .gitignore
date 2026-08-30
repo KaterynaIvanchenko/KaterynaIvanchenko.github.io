@@ -1,2 +1,21 @@
+# Local notes and AI-assistant config — must never reach the public site
 CLAUDE.md
 .claude/
+
+# OS and editor junk. Everything committed here is served publicly by GitHub
+# Pages, so a stray .DS_Store from a Mac would be a downloadable file.
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# DAW and editor project files — this repo holds exports, not sessions
+*.rpp
+*.RPP
+*.rpp-bak
+*.als
+*.aup3
+*.psd

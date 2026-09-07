@@ -156,6 +156,9 @@
           : 'https://player.vimeo.com/video/' + id + '?autoplay=1&dnt=1&title=0&byline=0&portrait=0';
         node.title = title;
         node.allow = 'autoplay; fullscreen; picture-in-picture';
+        // Explicit, not left to the browser default: YouTube refuses playback
+        // (error 153) when it cannot see an origin it trusts.
+        node.referrerPolicy = 'strict-origin-when-cross-origin';
         node.setAttribute('allowfullscreen', '');
       }
 

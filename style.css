@@ -189,6 +189,9 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-
   background: var(--accent-soft);
 }
 
+/* Compact variant — used inside cards, where a full-size button would shout. */
+.btn--sm { padding: 0.62rem 1.2rem; font-size: 0.8rem; }
+
 /* ===== 8. Header ===== */
 .site-header {
   position: fixed;
@@ -441,7 +444,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-
 .project-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -484,20 +487,28 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-
 .project-card__credits {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: 0.35rem 1.25rem;
+  gap: 0.5rem 1rem;
   margin: 1.25rem 0;
   padding: 1rem 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   font-size: 0.85rem;
 }
+/* Amber chips. Same fill/ink pair as .btn--primary — dark text on amber, never
+   white. The column is max-content, and grid items stretch across it, so every
+   chip takes the width of the longest label and they line up as one bar.
+   align-self:start keeps a chip one line tall when its value wraps to two. */
 .project-card__credits dt {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  padding-top: 0.15rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 4px;
+  padding: 0.3em 0.65em;
+  text-align: center;
+  align-self: start;
 }
 .project-card__credits dd { color: var(--text); }
 
@@ -518,6 +529,17 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-
   background: var(--accent);
 }
 .project-card__did li.is-credit::before { background: var(--text-muted); opacity: 0.5; }
+
+/* margin-top:auto pins the link row to the bottom of .project-card__info,
+   which is already a flex column — so on desktop the button lines up with
+   the bottom edge of the media beside it. */
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
 
 /* ===== 13. Implementation ===== */
 .impl__grid {
@@ -820,13 +842,41 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 1.25rem - var(--section-
 
 .project-card__media { position: relative; min-width: 0; }
 
-/* Media fills the card height beside the credits column (desktop only). */
+/* The trailer keeps its own 16:9 and is centred in the column. Stretching it to
+   the card height (what this rule used to do) made the box ~1.06:1, so cover
+   cropped roughly 40% off the sides and sliced the game logo in half.
+   A 16:9 frame in a ~1.1:1 column leaves dead space above and below, so the
+   column is backed by the same poster, blown up and blurred out — the panel
+   reads as full edge to edge while the frame itself stays whole and sharp.
+   The card passes its own image in via the --poster custom property; declaring
+   it here, inside the desktop query, also means mobile never downloads it. */
 @media (min-width: 901px) {
-  .project-card__media { display: flex; }
-  .project-card__media .video-embed {
+  .project-card__media {
+    display: flex;
+    align-items: center;
+    overflow: hidden;          /* clips the scaled-up backdrop */
+    background: var(--ink-900);
+  }
+  .project-card__media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--poster, none) center / cover no-repeat;
+    /* scale() hides the soft, half-transparent edge the blur leaves behind */
+    transform: scale(1.18);
+    filter: blur(30px) brightness(0.62) saturate(1.2);
+  }
+  .project-card__media .video-embed { position: relative; }
+
+  /* Alternative look, switched on from the HTML with --fill: the frame is
+     stretched to the whole panel instead of keeping 16:9. No dead space and
+     the art reads bigger, but cover then crops ~19% off each side, which cuts
+     into a centred title card. The backdrop is pointless here — it would be
+     completely covered — so it is not painted. */
+  .project-card__media--fill::before { display: none; }
+  .project-card__media--fill .video-embed {
     aspect-ratio: auto;
-    height: 100%;
-    min-height: 300px;
+    align-self: stretch;
   }
 }
 

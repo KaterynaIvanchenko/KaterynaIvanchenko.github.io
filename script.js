@@ -79,12 +79,14 @@
   });
 
   // The hamburger sits outside .nav, so the trap above never sees a Tab from it.
+  // Both directions are handled: forward lands on the first link, backward on the
+  // last — otherwise Shift+Tab fell through to the page behind the open panel.
   hamburger.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab' || e.shiftKey || !nav.classList.contains('nav--open')) return;
-    var first = nav.querySelector('.nav__link');
-    if (!first) return;
+    if (e.key !== 'Tab' || !nav.classList.contains('nav--open')) return;
+    var items = nav.querySelectorAll('.nav__link');
+    if (!items.length) return;
     e.preventDefault();
-    first.focus();
+    (e.shiftKey ? items[items.length - 1] : items[0]).focus();
   });
 
   // A resize back to desktop must not leave the body scroll-locked.
@@ -111,7 +113,12 @@
   /* ---------- 4. Scroll spy ---------- */
   var links = Array.prototype.slice.call(nav.querySelectorAll('.nav__link'));
   var targets = links
-    .map(function (l) { return document.querySelector(l.getAttribute('href')); })
+    .map(function (l) {
+      // Only in-page anchors. querySelector throws on anything else, and one
+      // throw here would take down every concern below it in this IIFE.
+      var href = l.getAttribute('href') || '';
+      return /^#[A-Za-z][\w-]*$/.test(href) ? document.getElementById(href.slice(1)) : null;
+    })
     .filter(Boolean);
 
   if ('IntersectionObserver' in window && targets.length) {
@@ -302,12 +309,27 @@
       rafId = 0;
     }
 
+    // .zone-blobs is display:none below 768px. Without this the rAF loop still
+    // ran full tilt on phones, writing transforms to nodes that never render.
+    var wide = window.matchMedia('(min-width: 769px)');
+
     function sync() {
-      var anyVisible = zoneList.some(function (z) { return z.visible; });
+      var anyVisible = wide.matches && zoneList.some(function (z) { return z.visible; });
       if (anyVisible) start(); else stop();
     }
 
+    if (wide.addEventListener) {
+      wide.addEventListener('change', function () { measure(); sync(); });
+    }
+
     measure();
+    // Base positions are captured at parse time, before web fonts swap and shift
+    // everything below the fold. Re-measure once the layout has actually settled,
+    // otherwise the pointer repulsion is offset by however far the page moved.
+    window.addEventListener('load', measure);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(measure);
+    }
 
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
@@ -335,7 +357,115 @@
     }, { passive: true });
   })();
 
-  /* ---------- 7. Footer year ---------- */
+  /* ---------- 7. Contact form ----------
+     Progressive enhancement: the form posts on its own without JS. Here we
+     intercept it so the visitor stays on the page and gets an inline status. */
+  var cForm = document.querySelector('.contact-form');
+  if (cForm) {
+    var cStatus = cForm.querySelector('.contact-form__status');
+    var cSubmit = cForm.querySelector('.contact-form__submit');
+    var cSubmitLabel = cSubmit && cSubmit.querySelector('.contact-form__submit-label');
+    var cSubmitText = cSubmitLabel ? cSubmitLabel.textContent : '';
+    var sending = false;
+
+    // The status paragraph is never `hidden` and never emptied by JS: a live
+    // region has to be in the accessibility tree BEFORE its text changes, or the
+    // announcement is unreliable. `:empty` in the CSS hides the resting state.
+    var setStatus = function (text, ok) {
+      if (!cStatus) return;
+      cStatus.classList.toggle('contact-form__status--ok', ok);
+      cStatus.classList.toggle('contact-form__status--err', !ok);
+      // A failure is assertive: the visitor is about to walk away believing the
+      // message was sent.
+      cStatus.setAttribute('role', ok ? 'status' : 'alert');
+      cStatus.textContent = text;
+    };
+
+    var setSending = function (on) {
+      sending = on;
+      if (!cSubmit) return;
+      // aria-disabled, not `disabled`: disabling the focused element throws focus
+      // back to <body>, so a keyboard visitor loses their place mid-submit.
+      cSubmit.setAttribute('aria-disabled', String(on));
+      if (cSubmitLabel) cSubmitLabel.textContent = on ? 'Sending…' : cSubmitText;
+    };
+
+    cForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sending) return;
+      setSending(true);
+
+      // A stalled connection must not leave the button reading "Sending…" for
+      // ever — without a deadline the promise can simply never settle.
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl && window.setTimeout(function () { ctrl.abort(); }, 15000);
+
+      fetch(cForm.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(cForm),
+        signal: ctrl ? ctrl.signal : undefined
+      })
+        .then(function (res) { return res.json().catch(function () { return {}; }); })
+        .then(function (data) {
+          if (data && data.success) {
+            cForm.reset();
+            setStatus('Thanks — your message is on its way. I usually reply within a day or two.', true);
+          } else {
+            setStatus('Something went wrong — the message did not send. Please try again, or reach me on LinkedIn.', false);
+          }
+        })
+        .catch(function () {
+          setStatus('Network error — the message did not send. Please try again, or reach me on LinkedIn.', false);
+        })
+        .then(function () {
+          if (timer) window.clearTimeout(timer);
+          setSending(false);
+        });
+    });
+  }
+
+  /* ---------- 8. Deferred mailto ----------
+     The address is not published on the page, so the envelope icon carries it
+     base64-encoded and the real href is written on the first hover, focus or
+     click. Harvesters that grep the served HTML for `mailto:` find nothing;
+     anyone who opens devtools still can — this is anti-scraping, not secrecy.
+     Without JS the link falls back to its #contact href, which lands on the form. */
+  document.querySelectorAll('[data-m]').forEach(function (a) {
+    var armed = false;
+
+    function arm() {
+      if (armed) return;
+      armed = true;
+      try {
+        a.href = 'mailto:' + atob(a.dataset.m);
+      } catch (err) {
+        armed = false;           // leave the #contact fallback in place
+      }
+    }
+
+    // contextmenu/auxclick are in here so "copy link address" and middle-click
+    // get the real address even when the cursor was already parked on the icon
+    // at load and no pointerenter ever fired.
+    ['pointerenter', 'focus', 'touchstart', 'contextmenu', 'auxclick'].forEach(function (evt) {
+      a.addEventListener(evt, arm, { passive: true });
+    });
+
+    // A plain click can arrive with no prior hover. Arm, then navigate
+    // explicitly — mutating href mid-click is not reliably picked up by the
+    // default action. Modified clicks are left alone so the browser's own
+    // open-in-new-tab / save behaviour still works.
+    a.addEventListener('click', function (e) {
+      arm();
+      var plain = e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+      if (armed && plain) {
+        e.preventDefault();
+        window.location.href = a.href;
+      }
+    });
+  });
+
+  /* ---------- 9. Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();

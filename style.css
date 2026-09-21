@@ -579,20 +579,17 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
 .impl-card__desc { font-size: 0.9rem; color: var(--text-muted); }
 
 /* ===== 14. Skills ===== */
-/* A deliberate 2x2 block plus a full-width language strip, not an auto-fit
-   flow: auto-fit left the five groups ragged (four narrow columns, the fifth
-   orphaned on its own row). Cards in a row stretch to a shared height, so the
-   bottoms line up. Groups are ordered by what an audio director looks for
-   first: specialisations, then engines, then the tool inventory. */
+/* Auto-fit columns: at the full 1180px container all five groups sit on one row,
+   and they reflow to 4 / 3 / 2 / 1 as the viewport narrows. Cards stretch to the
+   tallest in their row so the bottoms line up. min() lets a track shrink below
+   200px — a bare minimum wider than the content box overflows a 320px phone. */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 1.5rem;
-}
-.skill-group--wide { grid-column: 1 / -1; }
-
-@media (max-width: 700px) {
-  .skills__grid { grid-template-columns: 1fr; }
+  /* Each card ends where its content ends. Stretching them to the tallest in the
+     row leaves a short group like DAWs as a mostly empty box. */
+  align-items: start;
 }
 
 .skill-group {
@@ -626,23 +623,10 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
   transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 .skill-tag:hover { border-color: var(--accent); color: var(--accent-text); background: var(--accent-soft); }
-/* Language rows are a spec table, so they are laid out as one: every row is the
-   same width and the level column starts at the same x in each. `space-between`
-   used to set the gap from the text length, which made "Swedish Professional"
-   look crammed against the border next to a roomy "Ukrainian Native". */
-.skill-group--wide .skill-group__tags {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
-}
-.skill-tag--lang {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1.25rem;
-  align-items: baseline;
-  padding: 0.35rem 0.8rem;
-}
+/* Language chips are ordinary tags: they flow and wrap wherever they fit, like
+   every other group. They used to be forced to full width as a spec table, which
+   made the card a tall thin tower next to the short ones. */
 .skill-tag--lang b { font-weight: 500; color: var(--text); }
-.skill-tag--lang span { text-align: right; }
 
 /* ===== 15. About ===== */
 .about__inner {
@@ -732,6 +716,9 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
   gap: 4rem;
   align-items: start;
 }
+/* The section header lives in the left column here, not above the grid, so the
+   form card's top edge lines up with "Let's work together". */
+.contact__inner .section-header { margin-bottom: 2rem; }
 
 /* Stands where the mailto used to: the address is deliberately not published,
    so this is the column's display-type anchor and the pointer to the form.
@@ -806,6 +793,13 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
 }
 
 .contact-form__field { margin-bottom: 1.25rem; }
+
+.contact-form__hint {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
 
 .contact-form__label {
   display: block;

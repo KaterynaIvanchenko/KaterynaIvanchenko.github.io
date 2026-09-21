@@ -410,13 +410,13 @@
         .then(function (data) {
           if (data && data.success) {
             cForm.reset();
-            setStatus('Thanks — your message is on its way. I usually reply within a day or two.', true);
+            setStatus('Thanks - your message is on its way. I usually reply within a day or two.', true);
           } else {
-            setStatus('Something went wrong — the message did not send. Please try again, or reach me on LinkedIn.', false);
+            setStatus('Something went wrong - the message did not send. Please try again, or reach me on LinkedIn.', false);
           }
         })
         .catch(function () {
-          setStatus('Network error — the message did not send. Please try again, or reach me on LinkedIn.', false);
+          setStatus('Network error - the message did not send. Please try again, or reach me on LinkedIn.', false);
         })
         .then(function () {
           if (timer) window.clearTimeout(timer);

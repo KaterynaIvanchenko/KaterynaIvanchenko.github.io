@@ -158,8 +158,13 @@
         node.setAttribute('aria-label', title);
       } else {
         node = document.createElement('iframe');
+        // youtube.com, not youtube-nocookie.com: a cookieless embed that also
+        // autostarts trips YouTube's "sign in to confirm you're not a bot" wall
+        // (verified - either factor alone is fine, the combination is not).
+        // Nothing is requested until the visitor clicks, so the no-cookies-
+        // before-a-user-action rule still holds.
         node.src = provider === 'youtube'
-          ? 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1'
+          ? 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1'
           : 'https://player.vimeo.com/video/' + id + '?autoplay=1&dnt=1&title=0&byline=0&portrait=0';
         node.title = title;
         node.allow = 'autoplay; fullscreen; picture-in-picture';

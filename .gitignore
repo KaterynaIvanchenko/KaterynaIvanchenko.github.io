@@ -19,3 +19,13 @@ desktop.ini
 *.als
 *.aup3
 *.psd
+
+# Video masters. The 4K HEVC showreel source is 322 MB - GitHub rejects anything
+# over 100 MB, and the repo only ever needs the encoded web copy.
+*.mov
+*.MOV
+*.mxf
+*.prores.mp4
+
+# Local preview helper - not part of the published site
+serve.js

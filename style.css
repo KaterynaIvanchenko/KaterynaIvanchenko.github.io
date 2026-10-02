@@ -587,9 +587,6 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 1.5rem;
-  /* Each card ends where its content ends. Stretching them to the tallest in the
-     row leaves a short group like DAWs as a mostly empty box. */
-  align-items: start;
 }
 
 .skill-group {
@@ -677,37 +674,6 @@ main[id] { scroll-margin-top: var(--header-h); outline: none; }
   color: var(--text-muted);
   padding-top: 0.2rem;
 }
-
-/* ===== 16. References ===== */
-.references__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: 1.5rem;
-}
-.reference-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  box-shadow: var(--shadow);
-}
-.reference-card__quote { font-size: 0.95rem; color: var(--text); }
-.reference-card__quote::before {
-  content: '\201C';
-  color: var(--accent);
-  font-size: 2rem;
-  line-height: 0;
-  vertical-align: -0.35em;
-  margin-right: 0.15rem;
-}
-.reference-card__who {
-  margin-top: 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-}
-.reference-card__who b { display: block; font-weight: 500; color: var(--text); }
 
 /* ===== 17. Contact ===== */
 .contact__inner {

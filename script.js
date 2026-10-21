@@ -138,6 +138,9 @@
   document.querySelectorAll('.video-embed').forEach(function (box) {
     var btn = box.querySelector('.video-embed__btn');
     if (!btn) return;
+    // Kept so a finished file video can hand back the poster instead of
+    // freezing on its last frame. btn is reused, so its listener survives.
+    var facade = Array.prototype.slice.call(box.childNodes);
 
     btn.addEventListener('click', function () {
       var provider = box.dataset.provider;
@@ -156,6 +159,13 @@
         node.autoplay = true;
         node.playsInline = true;
         node.setAttribute('aria-label', title);
+        node.addEventListener('ended', function () {
+          var hadFocus = box.contains(document.activeElement);
+          if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen();
+          box.innerHTML = '';
+          facade.forEach(function (n) { box.appendChild(n); });
+          if (hadFocus) btn.focus();
+        });
       } else {
         node = document.createElement('iframe');
         // youtube.com, not youtube-nocookie.com: a cookieless embed that also
